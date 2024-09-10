@@ -1,4 +1,4 @@
-import { Mixed, Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 
 export interface UserFields {
   username: string;
@@ -15,14 +15,14 @@ export interface UserMethods {
 export type UserModel = Model<UserFields, {}, UserMethods>;
 
 export interface TaskFields {
-  user: Mixed;
+  user: Types.ObjectId;
   title: string;
   description: string;
   status: string;
 }
 
 export type TaskMutation = {
-  user: Mixed;
+  user: Types.ObjectId;
   title: string;
   description: string | null;
   status: string;

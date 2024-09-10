@@ -11,6 +11,10 @@ usersRouter.post('/', async (req, res, next) => {
       password: req.body.password,
     });
 
+    if (!req.body.username || !req.body.password) {
+      return res.status(400).send({ error: 'Username and password are required!' });
+    }
+
     user.generateToken();
 
     await user.save();
